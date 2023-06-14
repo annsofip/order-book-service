@@ -18,8 +18,16 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RequiredArgsConstructor
 public class OrderServiceTest {
@@ -37,7 +45,6 @@ public class OrderServiceTest {
 
     @Test
     void createOrder_shouldReturnOrderResponseDTOWhenOrderIsCreated() {
-        // Arrange
         OrderRequestDTO orderRequestDTO = createSampleOrderRequestDTO();
         Order order = createSampleOrder();
         Order savedOrder = createSampleOrder();
@@ -47,10 +54,8 @@ public class OrderServiceTest {
         when(orderRepository.save(order)).thenReturn(savedOrder);
         when(orderMapper.orderToOrderDto(savedOrder)).thenReturn(expectedResponseDTO);
 
-        // Act
         OrderResponseDTO responseDTO = orderService.createOrder(orderRequestDTO);
 
-        // Assert
         assertNotNull(responseDTO);
         assertEquals(expectedResponseDTO.getId(), responseDTO.getId());
         assertEquals(expectedResponseDTO.getTicker(), responseDTO.getTicker());
@@ -67,7 +72,6 @@ public class OrderServiceTest {
 
     @Test
     void getOrder_shouldReturnOptionalOrderResponseDTOWhenOrderExists() {
-        // Arrange
         UUID orderId = UUID.randomUUID();
         Order order = createSampleOrder();
         OrderResponseDTO expectedResponseDTO = createSampleOrderResponseDTO();
@@ -75,10 +79,8 @@ public class OrderServiceTest {
         when(orderRepository.findById(orderId)).thenReturn(Optional.of(order));
         when(orderMapper.orderToOrderDto(order)).thenReturn(expectedResponseDTO);
 
-        // Act
         Optional<OrderResponseDTO> responseDTO = orderService.getOrder(orderId);
 
-        // Assert
         assertTrue(responseDTO.isPresent());
         assertEquals(expectedResponseDTO.getId(), responseDTO.get().getId());
         assertEquals(expectedResponseDTO.getTicker(), responseDTO.get().getTicker());
@@ -94,15 +96,12 @@ public class OrderServiceTest {
 
     @Test
     void getOrder_shouldReturnEmptyOptionalWhenOrderDoesNotExist() {
-        // Arrange
         UUID orderId = UUID.randomUUID();
 
         when(orderRepository.findById(orderId)).thenReturn(Optional.empty());
 
-        // Act
         Optional<OrderResponseDTO> responseDTO = orderService.getOrder(orderId);
 
-        // Assert
         assertFalse(responseDTO.isPresent());
 
         verify(orderRepository, times(1)).findById(orderId);
@@ -111,7 +110,6 @@ public class OrderServiceTest {
 
     @Test
     void getSummary_shouldReturnOrderSummaryDTOWhenSummaryExists() {
-        // Arrange
         String ticker = "SAVE";
         OrderSide orderSide = OrderSide.BUY;
         LocalDate date = LocalDate.now();
@@ -121,15 +119,12 @@ public class OrderServiceTest {
                 .maxPrice(BigDecimal.valueOf(15.99))
                 .numberOfOrders(5L)
                 .build();
-        ;
 
         when(orderRepository.findSummaryByTickerAndOrderSideAndDate(ticker, orderSide, date))
                 .thenReturn(Optional.of(expectedSummary));
 
-        // Act
         OrderSummaryDTO summaryDTO = orderService.getSummary(ticker, orderSide, date);
 
-        // Assert
         assertNotNull(summaryDTO);
         assertEquals(ticker, summaryDTO.getTicker());
         assertEquals(orderSide, summaryDTO.getOrderSide());
@@ -144,7 +139,6 @@ public class OrderServiceTest {
 
     @Test
     void getSummary_shouldReturnEmptySummaryDTOWhenSummaryDoesNotExist() {
-        // Arrange
         String ticker = "SAVE";
         OrderSide orderSide = OrderSide.BUY;
         LocalDate date = LocalDate.now();
@@ -152,10 +146,8 @@ public class OrderServiceTest {
         when(orderRepository.findSummaryByTickerAndOrderSideAndDate(ticker, orderSide, date))
                 .thenReturn(Optional.empty());
 
-        // Act
         OrderSummaryDTO summaryDTO = orderService.getSummary(ticker, orderSide, date);
 
-        // Assert
         assertNotNull(summaryDTO);
         assertEquals(ticker, summaryDTO.getTicker());
         assertEquals(orderSide, summaryDTO.getOrderSide());
@@ -198,18 +190,6 @@ public class OrderServiceTest {
                 .volume(100)
                 .price(BigDecimal.valueOf(12.99))
                 .currency("SEK")
-                .date(LocalDate.now())
-                .build();
-    }
-
-    private OrderSummaryDTO createSampleOrderSummaryDTO() {
-        return OrderSummaryDTO.builder()
-                .ticker("SAVE")
-                .orderSide(OrderSide.BUY)
-                .averagePrice(BigDecimal.valueOf(12.99))
-                .minPrice(BigDecimal.valueOf(10.99))
-                .maxPrice(BigDecimal.valueOf(15.99))
-                .numberOfOrders(5L)
                 .date(LocalDate.now())
                 .build();
     }
