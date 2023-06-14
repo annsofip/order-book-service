@@ -1,10 +1,9 @@
 HELP.md
 target/
-mvnw.cmd
 mvnw
-!.mvn/wrapper/maven-wrapper.jar
-maven-wrapper.jar
-maven-wrapper.properties
+mvnw.cmd
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
 !**/src/main/**/target/
 !**/src/test/**/target/
 
