@@ -1,7 +1,7 @@
-package com.github.annsofip.orderbookservice.port.incoming.rest.dto;
+package com.github.annsofip.orderbookservice.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.annsofip.orderbookservice.domain.model.OrderSide;
+import com.github.annsofip.orderbookservice.model.OrderSide;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

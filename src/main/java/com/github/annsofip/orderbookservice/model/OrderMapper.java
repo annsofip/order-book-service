@@ -1,8 +1,8 @@
-package com.github.annsofip.orderbookservice.port.incoming;
+package com.github.annsofip.orderbookservice.model;
 
-import com.github.annsofip.orderbookservice.port.incoming.rest.dto.OrderRequestDTO;
-import com.github.annsofip.orderbookservice.port.incoming.rest.dto.OrderResponseDTO;
-import com.github.annsofip.orderbookservice.port.outgoing.repository.entity.Order;
+import com.github.annsofip.orderbookservice.api.OrderRequestDTO;
+import com.github.annsofip.orderbookservice.api.OrderResponseDTO;
+import com.github.annsofip.orderbookservice.repositories.entities.Order;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 

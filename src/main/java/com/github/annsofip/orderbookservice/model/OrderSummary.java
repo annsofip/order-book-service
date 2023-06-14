@@ -1,4 +1,4 @@
-package com.github.annsofip.orderbookservice.domain.model;
+package com.github.annsofip.orderbookservice.model;
 
 import lombok.Builder;
 import lombok.Getter;

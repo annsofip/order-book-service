@@ -1,9 +1,9 @@
-package com.github.annsofip.orderbookservice.port.incoming.rest;
+package com.github.annsofip.orderbookservice.controllers;
 
-import com.github.annsofip.orderbookservice.domain.model.OrderSide;
-import com.github.annsofip.orderbookservice.port.incoming.rest.dto.OrderRequestDTO;
-import com.github.annsofip.orderbookservice.port.incoming.rest.dto.OrderResponseDTO;
-import com.github.annsofip.orderbookservice.port.incoming.rest.dto.OrderSummaryDTO;
+import com.github.annsofip.orderbookservice.model.OrderSide;
+import com.github.annsofip.orderbookservice.api.OrderRequestDTO;
+import com.github.annsofip.orderbookservice.api.OrderResponseDTO;
+import com.github.annsofip.orderbookservice.api.OrderSummaryDTO;
 import com.github.annsofip.orderbookservice.service.OrderService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

@@ -1,10 +1,10 @@
 package com.github.annsofip.orderbookservice;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.annsofip.orderbookservice.domain.model.OrderSide;
-import com.github.annsofip.orderbookservice.port.incoming.rest.dto.OrderRequestDTO;
-import com.github.annsofip.orderbookservice.port.incoming.rest.dto.OrderResponseDTO;
-import com.github.annsofip.orderbookservice.port.outgoing.repository.OrderRepository;
+import com.github.annsofip.orderbookservice.model.OrderSide;
+import com.github.annsofip.orderbookservice.api.OrderRequestDTO;
+import com.github.annsofip.orderbookservice.api.OrderResponseDTO;
+import com.github.annsofip.orderbookservice.repositories.OrderRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

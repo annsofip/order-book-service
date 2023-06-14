@@ -1,13 +1,13 @@
 package com.github.annsofip.orderbookservice.service;
 
-import com.github.annsofip.orderbookservice.domain.model.OrderSide;
-import com.github.annsofip.orderbookservice.domain.model.OrderSummary;
-import com.github.annsofip.orderbookservice.port.incoming.OrderMapper;
-import com.github.annsofip.orderbookservice.port.incoming.rest.dto.OrderRequestDTO;
-import com.github.annsofip.orderbookservice.port.incoming.rest.dto.OrderResponseDTO;
-import com.github.annsofip.orderbookservice.port.incoming.rest.dto.OrderSummaryDTO;
-import com.github.annsofip.orderbookservice.port.outgoing.repository.OrderRepository;
-import com.github.annsofip.orderbookservice.port.outgoing.repository.entity.Order;
+import com.github.annsofip.orderbookservice.model.OrderSide;
+import com.github.annsofip.orderbookservice.model.OrderSummary;
+import com.github.annsofip.orderbookservice.model.OrderMapper;
+import com.github.annsofip.orderbookservice.api.OrderRequestDTO;
+import com.github.annsofip.orderbookservice.api.OrderResponseDTO;
+import com.github.annsofip.orderbookservice.api.OrderSummaryDTO;
+import com.github.annsofip.orderbookservice.repositories.OrderRepository;
+import com.github.annsofip.orderbookservice.repositories.entities.Order;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

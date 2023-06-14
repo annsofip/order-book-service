@@ -1,6 +1,6 @@
-package com.github.annsofip.orderbookservice.port.outgoing.repository.entity;
+package com.github.annsofip.orderbookservice.repositories.entities;
 
-import com.github.annsofip.orderbookservice.domain.model.OrderSide;
+import com.github.annsofip.orderbookservice.model.OrderSide;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

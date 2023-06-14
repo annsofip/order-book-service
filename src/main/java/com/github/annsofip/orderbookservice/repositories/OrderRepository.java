@@ -1,8 +1,8 @@
-package com.github.annsofip.orderbookservice.port.outgoing.repository;
+package com.github.annsofip.orderbookservice.repositories;
 
-import com.github.annsofip.orderbookservice.domain.model.OrderSide;
-import com.github.annsofip.orderbookservice.domain.model.OrderSummary;
-import com.github.annsofip.orderbookservice.port.outgoing.repository.entity.Order;
+import com.github.annsofip.orderbookservice.model.OrderSide;
+import com.github.annsofip.orderbookservice.model.OrderSummary;
+import com.github.annsofip.orderbookservice.repositories.entities.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,7 +13,7 @@ import java.util.UUID;
 
 public interface OrderRepository extends JpaRepository<Order, UUID> {
 
-    @Query("SELECT new com.github.annsofip.orderbookservice.domain.model.OrderSummary(" +
+    @Query("SELECT new com.github.annsofip.orderbookservice.model.OrderSummary(" +
             "avg(o.price), " +
             "max(o.price), " +
             "min(o.price), " +
